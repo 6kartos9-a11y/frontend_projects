@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM Manipulation</title>
+    <style>
+        /* A clean, modern layout for the demo */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+        }
+        /* Initial styles for the elements we will change */
+        #main-heading {
+            color: #0056b3;
+            margin-bottom: 20px;
+        }
+        #main-paragraph {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            /* This transition makes the style changes smooth */
+            transition: color 0.4s ease, background-color 0.4s ease, padding 0.4s ease;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-2px); /* A slight lift on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 1. The Heading we will change -->
+        <h1 id="main-heading">Original Heading</h1>
+
+        <!-- 2. The Paragraph we will style -->
+        <p id="main-paragraph">
+            This is the original paragraph. Click the button below to see how
+            JavaScript can change the content and style of elements on this page.
+        </p>
+
+        <!-- 3. The Button that triggers the JavaScript function -->
+        <button onclick="changeContentAndStyle()">Change it!</button>
+    </div>
+
+    <script>
+        // This is the JavaScript function that performs the DOM manipulation
+        function changeContentAndStyle() {
+            
+            // --- Step 1: Select the HTML elements using their IDs ---
+            // We get a reference to the heading and paragraph elements
+            const heading = document.getElementById('main-heading');
+            const paragraph = document.getElementById('main-paragraph');
+            heading.textContent = "Heading Changed!";
+        
+            paragraph.style.color = '#ffffff';
+            paragraph.style.backgroundColor = '#d9534f'; 
+            paragraph.style.fontWeight = 'bold';
+            paragraph.style.padding = '20px';
+            paragraph.style.borderRadius = '8px';
+            paragraph.textContent = "The paragraph's style and text have been updated dynamically!";
+        }
+    </script>
+
+</body>
+</html>
