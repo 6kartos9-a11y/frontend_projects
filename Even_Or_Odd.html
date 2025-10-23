@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even or Odd Checker</title>
+    <style>
+        /* Basic styling for a clean look */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 25px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 30px; /* Prevents layout shift */
+        }
+        .even {
+            color: #28a745; /* Green for Even */
+        }
+        .odd {
+            color: #dc3545; /* Red for Odd */
+        }
+        .error {
+            color: #ffc107; /* Yellow for Error */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Even or Odd?</h1>
+        <p>Enter a whole number to check if it's even or odd.</p>
+        
+        <!-- Input field for the user -->
+        <input type="number" id="userInput" placeholder="e.g., 42">
+        
+        <!-- Button that triggers the function -->
+        <button onclick="checkNumber()">Check Number</button>
+        
+        <!-- Element to display the result -->
+        <h2 id="result"></h2>
+    </div>
+
+    <script>
+        // This is the JavaScript function
+        function checkNumber() {
+            // 1. Get the user input from the HTML element
+            const userInputString = document.getElementById('userInput').value;
+            const resultElement = document.getElementById('result');
+
+            // Clear previous result and styling
+            resultElement.textContent = '';
+            resultElement.className = '';
+
+            // Check if the input is empty
+            if (userInputString === '') {
+                resultElement.textContent = 'Please enter a number!';
+                resultElement.classList.add('error');
+                return; // Stop the function
+            }
+            
+            // 2. Convert the input string to an integer number
+            const number = parseInt(userInputString);
+
+            // 3. Use a conditional statement (if-else) to check the number
+            // The modulo operator (%) gives the remainder of a division.
+            // If a number divided by 2 has a remainder of 0, it's even.
+            if (number % 2 === 0) {
+                // If it's even, display "Even"
+                resultElement.textContent = `${number} is an Even number.`;
+                resultElement.classList.add('even');
+            } else {
+                // Otherwise, display "Odd"
+                resultElement.textContent = `${number} is an Odd number.`;
+                resultElement.classList.add('odd');
+            }
+        }
+    </script>
+
+</body>
+</html>
